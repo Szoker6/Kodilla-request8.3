@@ -1,45 +1,46 @@
 'use strict';
 
 
-var output = document.getElementById('output');
-var outputinfo = document.getElementById('outputinfo');
-var buttonC = document.getElementById('buttonC');
-var buttonF = document.getElementById('buttonF');
+var numberOfDegrees = document.getElementById('numberOfDegrees');
+var waterCondition = document.getElementById('waterCondition');
+var wayOfDress = document.getElementById('wayOfDress');
+var buttonCelc = document.getElementById('buttonCelc');
+var buttonFahr = document.getElementById('buttonFahr');
 
-output.innerHTML = 'Wcisnij guzik jeśli chcesz zamieić stopnie' + '<br><br>'; 
+numberOfDegrees.innerHTML = 'Wcisnij guzik jeśli chcesz zamieić stopnie' + '<br><br>'; 
 
-buttonC.addEventListener('click', function() {	  
+buttonCelc.addEventListener('click', function() {	  
     var degreesC = window.prompt('Prosze podać stopnie celcjusza');
     var valueC = parseFloat(degreesC);
     var degreesF = convertCelsiusToFeranheit(degreesC);
 
     if (!isNaN(valueC)) {
-            output.innerHTML = 'Stopnie Celsjusza: ' + degreesC + '&#x2103 ' + '<br>' + 'Stopnie Fahrenheita: ' + degreesF + '&#x2109' + '<br>'; 
+        numberOfDegrees.innerHTML = 'Stopnie Celsjusza: ' + degreesC + '&#x2103 ' + '<br>' + 'Stopnie Fahrenheita: ' + degreesF + '&#x2109' + '<br>'; 
     } else if (isNaN(valueC)) {
-            output.innerHTML = 'Nie wpisałeś cyfry';
+        numberOfDegrees.innerHTML = 'Nie wpisałeś cyfry';
     } else {
-        output.innerHTML = 'Nic nie wpisałeś';
+        numberOfDegrees.innerHTML = 'Nic nie wpisałeś';
     }  
     changeStateOfWater(valueC);
     stateOfDressToTemperature(valueC);
 });
 
-buttonF.addEventListener('click', function() {	   
+buttonFahr.addEventListener('click', function() {	   
     var degreesF = window.prompt('Prosze podać stopnie Fahrenheita');
     var valueF = parseFloat(degreesF);
     var degreesC = convertFeranheitToCelsius(degreesF);
     
     if (!isNaN(valueF)) {
-            output.innerHTML = 'Stopnie Fahrenheita: ' + degreesF + '&#x2109 ' + '<br>' + 'Stopnie Celsjusza: ' + degreesC + '&#x2103' + '<br>'; 
+        numberOfDegrees.innerHTML = 'Stopnie Fahrenheita: ' + degreesF + '&#x2109 ' + '<br>' + 'Stopnie Celsjusza: ' + degreesC + '&#x2103' + '<br>'; 
     } else if (isNaN(valueF)) {
-            output.innerHTML = 'Nie wpisałeś cyfry';
+        numberOfDegrees.innerHTML = 'Nie wpisałeś cyfry';
     } else {
-        output.innerHTML = 'Nic nie wpisałeś';
+        numberOfDegrees.innerHTML = 'Nic nie wpisałeś';
     }  
     var celcius = convertFeranheitToCelsius(valueF);
     changeStateOfWater(celcius); 
-    var dress = convertFeranheitToCelsius(valueF);
-    stateOfDressToTemperature(dress);   
+ 
+    stateOfDressToTemperature(celcius);   
 });
 
 function convertFeranheitToCelsius(degreesF) {
@@ -51,30 +52,28 @@ function convertCelsiusToFeranheit(degreesC) {
 };
 
 function changeStateOfWater(valueC) {
-    var outputinfo = document.getElementById('outputinfo');
     if(valueC === 0) {
-        outputinfo.innerHTML = 'To jest temperatura zamarzania';
+        waterCondition.innerHTML = 'To jest temperatura zamarzania';
     } else if (valueC === 100) {
-        outputinfo.innerHTML = 'To jest temperatura wrzenia';
+        waterCondition.innerHTML = 'To jest temperatura wrzenia';
     } else if (valueC < 0) {
-        outputinfo.innerHTML = 'Woda zmieniła się w lód';
+        waterCondition.innerHTML = 'Woda zmieniła się w lód';
     } else if (valueC > 100) {
-        outputinfo.innerHTML = 'Woda zmieniła się w parę';
+        waterCondition.innerHTML = 'Woda zmieniła się w parę';
     } else {
-        outputinfo.innerHTML = '';
+        waterCondition.innerHTML = '';
     } 
 };
 
-function stateOfDressToTemperature(valueC) {
-    var outputinfo2 = document.getElementById('outputinfo2');
+function stateOfDressToTemperature(valueC) {  
     if (valueC <= 0 ) {
-        outputinfo2.innerHTML = 'Należy ubrać cieplutkie ubranie';
+        wayOfDress.innerHTML = 'Należy ubrać cieplutkie ubranie';
     } else if (valueC >= 20 && valueC < 40) {
-        outputinfo2.innerHTML = 'Można spokojnie ubrać krótkie spodenki';
+        wayOfDress.innerHTML = 'Można spokojnie ubrać krótkie spodenki';
     } else if (valueC <= 10) {
-        outputinfo2.innerHTML = 'Należy ubrać kurtkę i czapkę';
+        wayOfDress.innerHTML = 'Należy ubrać kurtkę i czapkę';
     } else {
-        outputinfo2.innerHTML = '';
+        wayOfDress.innerHTML = '';
     }
 };
     
