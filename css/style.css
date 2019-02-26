@@ -6,7 +6,7 @@ body {
   text-align: center;
 }
 
-button {
+buttonC {
   display: inline-block;
   padding: 11px 50px;
   max-width: 100%;
@@ -27,7 +27,7 @@ button {
   user-select: none;
 }
 
-button:hover, button:active {
+buttonC:hover, buttonC:active {
   color: #02ac46;
   background-color: #fff;
 }

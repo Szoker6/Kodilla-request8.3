@@ -6,12 +6,8 @@ body {
     text-align: center;
 }
 
-.buttons {
-    display: none;
-}
-
-button {
-   
+buttonC {
+	display: inline-block;
     padding: 11px 50px;
     max-width: 100%;
     
@@ -39,3 +35,5 @@ button {
 		background-color: #fff;
 	}
 }
+
+
