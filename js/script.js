@@ -1,6 +1,5 @@
 'use strict';
 
-
 var numberOfDegrees = document.getElementById('numberOfDegrees');
 var waterCondition = document.getElementById('waterCondition');
 var wayOfDress = document.getElementById('wayOfDress');
@@ -12,7 +11,7 @@ numberOfDegrees.innerHTML = 'Wcisnij guzik jeśli chcesz zamieić stopnie' + '<b
 buttonCelc.addEventListener('click', function() {	  
     var degreesC = window.prompt('Prosze podać stopnie celcjusza');
     var valueC = parseFloat(degreesC);
-    var degreesF = convertCelsiusToFeranheit(degreesC);
+    var degreesF = convertCelsiusToFeranheit(degreesC).toFixed(1);
 
     if (!isNaN(valueC)) {
         numberOfDegrees.innerHTML = 'Stopnie Celsjusza: ' + degreesC + '&#x2103 ' + '<br>' + 'Stopnie Fahrenheita: ' + degreesF + '&#x2109' + '<br>'; 
@@ -28,7 +27,7 @@ buttonCelc.addEventListener('click', function() {
 buttonFahr.addEventListener('click', function() {	   
     var degreesF = window.prompt('Prosze podać stopnie Fahrenheita');
     var valueF = parseFloat(degreesF);
-    var degreesC = convertFeranheitToCelsius(degreesF);
+    var degreesC = convertFeranheitToCelsius(degreesF).toFixed(1);
     
     if (!isNaN(valueF)) {
         numberOfDegrees.innerHTML = 'Stopnie Fahrenheita: ' + degreesF + '&#x2109 ' + '<br>' + 'Stopnie Celsjusza: ' + degreesC + '&#x2103' + '<br>'; 
@@ -39,7 +38,6 @@ buttonFahr.addEventListener('click', function() {
     }  
     var celcius = convertFeranheitToCelsius(valueF);
     changeStateOfWater(celcius); 
- 
     stateOfDressToTemperature(celcius);   
 });
 
@@ -48,7 +46,7 @@ function convertFeranheitToCelsius(degreesF) {
 };
 
 function convertCelsiusToFeranheit(degreesC) {
-    return degreesC * 1.8 + 32;  
+    return degreesC * 1.8 + 32;     
 };
 
 function changeStateOfWater(valueC) {
